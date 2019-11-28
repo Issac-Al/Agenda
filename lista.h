@@ -26,6 +26,23 @@ Nodo * CrearNodo(Persona* persona){
     return nodo;
 }
 
+Nodo * buscar (Nodo* posible, char buscado[50]){
+Nodo * aux = posible;
+while (aux -> siguiente != NULL){
+if (strcmp(buscado, posible->persona.nombre)){
+    return aux;
+}else{
+    aux = aux->siguiente;
+}
+
+}
+if(strcmp(buscado, posible->persona.nombre)){
+    return aux;
+}else{
+    printf("No se encontro\n");
+    return NULL;
+}
+}
 void DestruirNodo(Nodo* nodo) {
   free(nodo);
 }
@@ -77,5 +94,15 @@ void EliminarElemento(int n, Lista* lista) {
      printf("Se ha eliminado el contacto");
       }
    }
+}
+
+void enlistar (Lista * lista){
+int posicion = 0;
+Nodo * puntero = lista->cabeza;
+while (posicion <= lista->longitud){
+    printf("%d. %s\n", posicion, puntero->persona.nombre);
+    puntero = puntero->siguiente;
+    posicion++;
+    }
 }
 #endif
